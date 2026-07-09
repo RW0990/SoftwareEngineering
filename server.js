@@ -12,15 +12,15 @@ const server = http.createServer((request, response) => {
   let sitePath = "./";
   switch (request.url) {
     case "/":
-      sitePath += "index.html";
+      sitePath += "dashboard.html";
       response.statusCode = 200;
       break;
     case "//page2.html":
-      sitePath += "index.html";
+      sitePath += "dashboard.html";
       response.statusCode = 200;
       break;
     case "Error.html":
-      sitePath += "index.html";
+      sitePath += "dashboard.html";
       response.statusCode = 404;
       break;
   }
