@@ -37,6 +37,15 @@ const server = http.createServer((request, response) => {
       response.statusCode = 200;
       break;
 
+    case "/tickets.html":
+      sitePath += "tickets.html";
+      response.statusCode = 200;
+      break;
+
+    case "/cart.html":
+      sitePath += "cart.html";
+      response.statusCode = 200;
+      break;
     default:
       sitePath += "Error.html";
       response.statusCode = 404;
