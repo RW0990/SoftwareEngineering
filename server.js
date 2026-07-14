@@ -12,15 +12,31 @@ const server = http.createServer((request, response) => {
   let sitePath = "./";
   switch (request.url) {
     case "/":
-      sitePath += "index.html";
+      sitePath += "dashboard.html";
       response.statusCode = 200;
       break;
-    case "//page2.html":
-      sitePath += "index.html";
+    case "//events.html":
+      sitePath += "dashboard.html";
+      response.statusCode = 200;
+      break;
+    case "//login.html":
+      sitePath += "dashboard.html";
+      response.statusCode = 200;
+      break;
+    case "//merchandise.html":
+      sitePath += "dashboard.html";
+      response.statusCode = 200;
+      break;
+    case "//contact.html":
+      sitePath += "dashboard.html";
+      response.statusCode = 200;
+      break;
+    case "//admin.html":
+      sitePath += "dashboard.html";
       response.statusCode = 200;
       break;
     case "Error.html":
-      sitePath += "index.html";
+      sitePath += "dashboard.html";
       response.statusCode = 404;
       break;
   }
