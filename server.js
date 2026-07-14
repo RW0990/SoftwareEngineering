@@ -12,17 +12,34 @@ const server = http.createServer((request, response) => {
   let sitePath = "./";
   switch (request.url) {
     case "/":
+    case "/dashboard.html":
       sitePath += "dashboard.html";
       response.statusCode = 200;
       break;
-    case "//page2.html":
-      sitePath += "dashboard.html";
+
+    case "/events.html":
+      sitePath += "events.html";
       response.statusCode = 200;
       break;
-    case "Error.html":
-      sitePath += "dashboard.html";
+
+    case "/contact.html":
+      sitePath += "contact.html";
+      response.statusCode = 200;
+      break;
+
+    case "/merchandise.html":
+      sitePath += "merchandise.html";
+      response.statusCode = 200;
+      break;
+
+    case "/login.html":
+      sitePath += "login.html";
+      response.statusCode = 200;
+      break;
+
+    default:
+      sitePath += "Error.html";
       response.statusCode = 404;
-      break;
   }
   fs.readFile(sitePath, (error, data) => {
     if (error) {
