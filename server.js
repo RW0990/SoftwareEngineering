@@ -12,28 +12,23 @@ const server = http.createServer((request, response) => {
   let sitePath = "./";
   switch (request.url) {
     case "/":
-    case "/dashboard.html":
       sitePath += "dashboard.html";
       response.statusCode = 200;
       break;
-
-    case "/events.html":
-      sitePath += "events.html";
+    case "//events.html":
+      sitePath += "dashboard.html";
       response.statusCode = 200;
       break;
-
-    case "/contact.html":
-      sitePath += "contact.html";
+    case "//login.html":
+      sitePath += "dashboard.html";
       response.statusCode = 200;
       break;
-
-    case "/merchandise.html":
-      sitePath += "merchandise.html";
+    case "//merchandise.html":
+      sitePath += "dashboard.html";
       response.statusCode = 200;
       break;
-
-    case "/login.html":
-      sitePath += "login.html";
+    case "//contact.html":
+      sitePath += "dashboard.html";
       response.statusCode = 200;
       break;
 
@@ -49,6 +44,7 @@ const server = http.createServer((request, response) => {
     default:
       sitePath += "Error.html";
       response.statusCode = 404;
+      break;
   }
   fs.readFile(sitePath, (error, data) => {
     if (error) {
