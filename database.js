@@ -1,6 +1,6 @@
 //setting up connection
 mongoose
-  .connect(dbURI)
+  .connect(DatabaseURI)
   .then(() => {
     console.log("Connected to MongoDB");
     append.listen(3000, () => {
