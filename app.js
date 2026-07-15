@@ -1,6 +1,7 @@
-const express = require("express");
+require("dotenv").config();
 const mongoose = require("mongoose");
-const bandSite = require("./SE PROJECT CODE");
+const express = require("express");
+const bandSite = require("./models/bandSite");
 
 //create app
 const site = express();
@@ -10,16 +11,11 @@ site.use(express.json());
 //making folder public
 site.use(express.static("public"));
 //use view engine
-site.set("view engine", ejs);
+site.set("views", "./views");
+site.set("view engine", "ejs");
 
 //connection to Database
-const DatabaseURI =
-  "mongodb+srv://whiteryan2599_db_user:2SlHwmD4V7ponOiE@bandapp.2dcjfoh.mongodb.net/";
-
-mongoose
-  .connect(DatabaseURI)
-  .then((result) => application.listen(3000))
-  .catch((error) => console.log(error));
+const DBURI = process.env.DBURI;
 
 //route
 site.get("/", (request, response) => {
@@ -38,38 +34,88 @@ site.get("/", (request, response) => {
 });
 
 //events page
-bandSite.get("/events", (request, repsonse) => {
-  response.render("events", {
-    title: "Events",
-  });
+site.get("/events", async (request, response) => {
+  try {
+    const events = await bandSite.find().sort({ showDate: 1 });
+
+    response.render("events", {
+      title: "Events",
+      events,
+    });
+  } catch (error) {
+    console.log(error);
+    response.status(500).send("Error loading events");
+  }
 });
 //login page
-bandSite.get("/login", (request, repsonse) => {
+site.get("/login", (request, response) => {
   response.render("login", {
     title: "Login",
   });
 });
 //contact page
-bandSite.get("/contact", (request, repsonse) => {
+site.get("/contact", (request, response) => {
   response.render("contact", {
     title: "Contact",
   });
 });
 //merchandise page
-bandSite.get("/merchandise", (request, repsonse) => {
+site.get("/merchandise", (request, response) => {
   response.render("merchandise", {
     title: "Merchandise",
   });
 });
 //admin page
-bandSite.get("/admin", (request, repsonse) => {
+site.get("/admin", (request, response) => {
   response.render("admin", {
     title: "Admin",
   });
 });
-//404 error page
-bandSite.use((request, repsonse) => {
-  response.status(404).render("404", {
-    title: "Error",
+//cart page
+site.get("/cart", (request, response) => {
+  const cartItems = [];
+
+  const cartTotal = cartItems.reduce((total, item) => total + item.price, 0);
+
+  response.render("cart", {
+    title: "Cart",
+    cartItems,
+    cartTotal,
   });
 });
+
+//tickets page
+site.get("/tickets", async (request, response) => {
+  try {
+    const events = await bandSite.find().sort({
+      showDate: 1,
+    });
+
+    response.render("tickets", {
+      title: "Tickets",
+      events,
+    });
+  } catch (error) {
+    console.log(error);
+    response.status(500).send("Error loading tickets");
+  }
+});
+//404 error page
+site.use((request, response) => {
+  response.status(404).render("404", {
+    title: "Error",
+    heading: "Page not found",
+    message: "The page you are looking for does not exist.",
+    status: 404,
+  });
+});
+
+//setting up connection
+console.log(DBURI);
+mongoose
+  .connect(DBURI)
+  .then(() => {
+    console.log("Connected to MongoDB");
+    site.listen(3000, () => console.log("Server runnning on port 3000"));
+  })
+  .catch((error) => console.log("MongoDB connection error: ", error));
