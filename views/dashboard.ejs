@@ -1,51 +1,55 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>Dashboard</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <link rel="stylesheet" href="/style.css" />
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Dashboard</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Michroma&display=swap"
+      rel="stylesheet" />
+  </head>
 
-<body class="dashboard">
+  <body class="dashboard">
 
-<%- include('partials/nav') %>
+    <%- include('partials/nav') %>
 
-<h1 id="dashboardtitle">Upcoming Shows</h1>
+    <h1 id="dashboardtitle">Upcoming Shows</h1>
 
-<% bandSite.forEach(show => { %>
+    <% bandSite.forEach(show => { %>
 
-<div id="details">
+    <div id="details">
 
-  <h2>
-    <%= show.showTitle %>
-  </h2>
+      <h2>
+        <%= show.showTitle %>
+      </h2>
 
-  <p>
-    <%= show.showDate.toDateString() %>
-  </p>
+      <p>
+        <%= show.showDate.toDateString() %>
+      </p>
 
-  <p>
-    <%= show.venue %> - <%= show.location %>
-  </p>
+      <p>
+        <%= show.venue %> - <%= show.location %>
+      </p>
 
-  <p>
-    <%= show.description %>
-  </p>
+      <p>
+        <%= show.description %>
+      </p>
 
-  <p>
-    Ticket price: €<%= show.price %>
-  </p>
+      <p>
+        Ticket price: €<%= show.price %>
+      </p>
 
-  <a href="/tickets/<%= show._id %>">
-    <button type="button">
-      Buy Tickets
-    </button>
-  </a>
+      <a href="/tickets/<%= show._id %>">
+        <button type="button">
+          Buy Tickets
+        </button>
+      </a>
 
-</div>
+    </div>
 
-<% }) %>
+    <% }) %>
 
-</body>
+  </body>
 </html>

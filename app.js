@@ -51,6 +51,13 @@ site.get("/login", (request, response) => {
     title: "Login",
   });
 });
+
+//register page 
+site.get("/register", (request, response) => {
+  response.render("register", {
+    title: "Register",
+  });
+});
 //contact page
 site.get("/contact", (request, response) => {
   response.render("contact", {

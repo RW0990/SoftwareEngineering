@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="/style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Michroma&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Michroma&display=swap"
+      rel="stylesheet" />
   </head>
 
   <body>
@@ -15,31 +16,50 @@
     <h1>Contact Us</h1>
 
     <% if (typeof success !== 'undefined' && success) { %>
-      <p class="form-success">Thank you for sending a message, we will reply shortly.</p>
+    <p class="form-success">Thank you for sending a message, we will reply
+      shortly.</p>
     <% } %>
 
     <% if (typeof error !== 'undefined' && error) { %>
-      <p class="form-error"><%= error %></p>
+    <p class="form-error"><%= error %></p>
     <% } %>
+    <div class="contactDiv">
+  <form id="contactForm" action="/contact" method="POST">
 
-    <form id="contactForm" action="/contact" method="POST">
+    <div class="formGroup">
       <label for="name">Name:</label>
-      <input type="text" id="name" name="name" value="<%= typeof name !== 'undefined' ? name : '' %>" required />
+      <input
+        type="text"
+        id="name"
+        name="name"
+        value="<%= typeof name !== 'undefined' ? name : '' %>"
+        required
+      />
+    </div>
 
-      <br /><br />
-
+    <div class="formGroup">
       <label for="email">Email:</label>
-      <input type="email" id="email" name="email" value="<%= typeof email !== 'undefined' ? email : '' %>" required />
+      <input
+        type="email"
+        id="email"
+        name="email"
+        value="<%= typeof email !== 'undefined' ? email : '' %>"
+        required
+      />
+    </div>
 
-      <br /><br />
-
+    <div class="formGroup">
       <label for="message">Message:</label>
-      <textarea id="message" name="message" required><%= typeof message !== 'undefined' ? message : '' %></textarea>
+      <textarea
+        id="message"
+        name="message"
+        required
+      ><%= typeof message !== 'undefined' ? message : '' %></textarea>
+    </div>
 
-      <br /><br />
-
-      <button type="submit">Send Message</button>
-    </form>
+    <button type="submit">Send Message</button>
+  </form>
+</div>
 
     <script>
       document
