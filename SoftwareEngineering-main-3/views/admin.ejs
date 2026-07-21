@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <title>Admin</title>
+
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <link rel="stylesheet" href="/style.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Michroma&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <%- include('partials/nav') %>
+
+    <main class="admin-container">
+      <h1>Admin Dashboard</h1>
+
+      <h2>Add New Event</h2>
+
+      <form action="/admin/events" method="POST">
+        <label> Show Title </label>
+
+        <input type="text" name="showTitle" required />
+
+        <label> Date </label>
+
+        <input type="date" name="showDate" required />
+
+        <label> Venue </label>
+
+        <input type="text" name="venue" required />
+
+        <label> Location </label>
+
+        <input type="text" name="location" required />
+
+        <label> Description </label>
+
+        <textarea name="description" required></textarea>
+
+        <label> Price </label>
+
+        <input type="number" name="price" required />
+
+        <button type="submit">Create Event</button>
+      </form>
+    </main>
+  </body>
+</html>
