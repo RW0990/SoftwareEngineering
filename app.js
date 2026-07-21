@@ -1,4 +1,3 @@
-require("dotenv").config();
 const mongoose = require("mongoose");
 const express = require("express");
 const bandSite = require("./models/bandSite");
@@ -13,7 +12,9 @@ site.set("views", "./views");
 site.set("view engine", "ejs");
 
 //connection to Database
-const DBURI = process.env.DBURI;
+const DBURI =
+  "mongodb+srv://whiteryan2599_db_user:2SlHwmD4V7ponOiE@bandapp.2dcjfoh.mongodb.net/BandApp";
+mongoose.connect(DBURI);
 
 //route
 site.get("/", (request, response) => {
@@ -52,7 +53,7 @@ site.get("/login", (request, response) => {
   });
 });
 
-//register page 
+//register page
 site.get("/register", (request, response) => {
   response.render("register", {
     title: "Register",
