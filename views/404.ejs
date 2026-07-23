@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title><%= title || 'Error' %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Michroma&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="">
+      <h1><%= heading || 'This is a Heading' %></h1>
+      <p><%= message || 'This is a paragraph.' %></p>
+      <% if (typeof status !== 'undefined') { %>
+        <p>Error code: <%= status %></p>
+      <% } %>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Events</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <link rel="stylesheet" href="/style.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Michroma&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <%- include('partials/nav') %>
+
+    <main id="upcomingevents">
+      <h1>Upcoming Events</h1>
+
+      <% events.forEach(event => { %>
+
+      <div class="event-card">
+        <h2><%= event.showTitle %></h2>
+
+        <p><%= event.showDate.toDateString() %></p>
+
+        <p><%= event.venue %>, <%= event.location %></p>
+
+        <p><%= event.description %></p>
+
+        <p>Ticket price: €<%= event.price %></p>
+
+        <a href="/tickets/<%= event._id %>"> Buy Tickets </a>
+      </div>
+
+      <% }) %>
+    </main>
+  </body>
+</html>

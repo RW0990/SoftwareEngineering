@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <title><%= title %></title>
+
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <link rel="stylesheet" href="/style.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Michroma&display=swap"
+      rel="stylesheet" />
+  </head>
+
+  <body>
+    <%- include('partials/nav') %>
+
+    <main class="ticket-page">
+      <div class="tickets">
+        <h1>Tickets</h1>
+        <br>
+        <% if (events.length === 0) { %>
+        <p class="noTickets">No tickets are currently available.</p>
+        <% } %>
+        <% events.forEach(event => { %>
+        <div class="ticket-card">
+
+          <h2><%= event.showTitle %></h2>
+
+          <p>Date: <%= event.showDate.toDateString() %></p>
+
+          <p>Venue: <%= event.venue %></p>
+
+          <p>Location: <%= event.location %></p>
+
+          <p><%= event.description %></p>
+
+          <p class="price">Price: €<%= event.price %></p>
+
+          <form action="/cart" method="POST">
+            <input type="hidden" name="eventId" value="<%= event._id %>" />
+
+            <button type="submit">Add Ticket to Cart</button>
+          </form>
+        </div>
+      </div>
+      <% }) %>
+    </main>
+  </body>
+</html>
