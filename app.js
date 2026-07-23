@@ -29,7 +29,10 @@ site.get("/", (request, response) => {
         bandSite: result,
       }),
     )
-    .catch((error) => console.log(error));
+    .catch((error) => {
+      console.log(error);
+      response.status(500).send("Error loading dashboard");
+    });
 });
 
 //events page
@@ -122,6 +125,7 @@ mongoose
   .connect(DBURI)
   .then(() => {
     console.log("Connected to MongoDB");
-    site.listen(3000, () => console.log("Server runnning on port 3000"));
+    const PORT = process.env.PORT || 3000;
+    site.listen(PORT, () => console.log(`Server running on port ${PORT}`));
   })
   .catch((error) => console.log("MongoDB connection error: ", error));
