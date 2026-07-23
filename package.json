@@ -1,4 +1,8 @@
 {
+  "name": "softwareengineering",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/RW0990/SoftwareEngineering.git"
@@ -19,5 +23,7 @@
   "scripts": {
     "start": "node app.js",
     "test": "echo \"No tests yet\""
-  }
+  },
+  "start": "node app.js",
+  "test": "echo \"No tests yet\""
 }
