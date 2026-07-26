@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 mongoose
-  .connect(DatabaseURI)
+  .connect(DBURI)
   .then(() => {
     console.log("Connected to MongoDB");
   })
