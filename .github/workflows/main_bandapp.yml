@@ -52,4 +52,4 @@ jobs:
           app-name: 'BandApp'
           slot-name: 'Production'
           package: .
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_14C56C4A1D754F1180347F0A3C0925C2 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_06105E66E5BB4C80A1E03B6CF5E3F880 }}
