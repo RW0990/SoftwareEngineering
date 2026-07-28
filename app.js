@@ -14,7 +14,6 @@ site.set("view engine", "ejs");
 //connection to Database
 const DBURI =
   "mongodb+srv://whiteryan2599_db_user:2SlHwmD4V7ponOiE@bandapp.2dcjfoh.mongodb.net/BandApp";
-mongoose.connect(DBURI);
 
 //route
 site.get("/", (request, response) => {
