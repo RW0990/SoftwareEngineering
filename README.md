@@ -24,5 +24,3 @@ nodemon app.js
 Open using Express:
 http://localhost:3000
 
-Alternatively the App is live on Azure:
-https://bandsite-djb7feere0dncsab.ukwest-01.azurewebsites.net
