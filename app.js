@@ -124,13 +124,16 @@ mongoose
   .connect(DBURI)
   .then(() => {
     console.log("Connected to MongoDB");
-    const PORT = process.env.PORT || 3000;
-    site.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+    const PORT = 3000;
+    site.listen(PORT, () =>
+      console.log(
+        `Server running on port 3000 - run http://localhost:3000/ in your browser`,
+      ),
+    );
   })
   .catch((error) => console.log("MongoDB connection error: ", error));
 
-
-javascriptapp.get("/dashboard", (req, res) => {
+site.get("/dashboard", (req, res) => {
   res.render("dashboard", {
     eventName: "Rock Shock Party",
     eventDate: "15 OCTOBER 2026",
