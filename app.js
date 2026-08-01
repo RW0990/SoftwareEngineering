@@ -124,10 +124,10 @@ mongoose
   .connect(DBURI)
   .then(() => {
     console.log("Connected to MongoDB");
-    const PORT = 3000;
+    const PORT = process.env.PORT || 3000;
     site.listen(PORT, () =>
       console.log(
-        `Server running on port 3000 - run http://localhost:3000/ in your browser`,
+        `Server running on port ${PORT} - run http://localhost:${PORT}/ in your browser`,
       ),
     );
   })
