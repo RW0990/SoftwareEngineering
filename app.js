@@ -93,22 +93,6 @@ site.get("/cart", (request, response) => {
   });
 });
 
-//tickets page
-site.get("/tickets", async (request, response) => {
-  try {
-    const events = await bandSite.find().sort({
-      showDate: 1,
-    });
-
-    response.render("tickets", {
-      title: "Tickets",
-      events,
-    });
-  } catch (error) {
-    console.log(error);
-    response.status(500).send("Error loading tickets");
-  }
-});
 //404 error page
 site.use((request, response) => {
   response.status(404).render("404", {
