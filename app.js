@@ -67,7 +67,7 @@ site.post("/login", async (request, response) => {
   }
 
   request.session.userId = user._id;
-  response.redirect("/dashboard");
+  response.redirect("/");
 });
 
 //register page
@@ -83,7 +83,7 @@ site.post("/register", async (request, response) => {
   await newUser.save();
 
   request.session.userId = newUser._id;
-  response.redirect("/dashboard");
+  response.redirect("/");
 });
 
 //logout
