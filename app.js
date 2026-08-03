@@ -1,16 +1,24 @@
 const mongoose = require("mongoose");
 const express = require("express");
+const session = require("express-session");
 const bandSite = require("./models/bandSite");
 const Event = require("./models/events");
+const User = require("./models/User");
 const site = express();
 
 //use json in browser
 site.use(express.json());
+site.use(express.urlencoded({ extended: true }));
 //making folder public
 site.use(express.static("public"));
 //use view engine
 site.set("views", "./views");
 site.set("view engine", "ejs");
+
+//sessioni
+site.use(
+  session({ secret: "segreto123", resave: false, saveUninitialized: false }),
+);
 
 //connection to Database
 const DBURI =
@@ -20,14 +28,9 @@ const DBURI =
 site.get("/", (request, response) => {
   bandSite
     .find()
-    .sort({
-      createdAt: -1,
-    })
+    .sort({ createdAt: -1 })
     .then((result) =>
-      response.render("dashboard", {
-        title: "Dashboard",
-        bandSite: result,
-      }),
+      response.render("dashboard", { title: "Dashboard", bandSite: result }),
     )
     .catch((error) => {
       console.log(error);
@@ -39,58 +42,75 @@ site.get("/", (request, response) => {
 site.get("/events", async (request, response) => {
   try {
     const events = await Event.find().sort({ showDate: 1 });
-    console.log("Events retrieved successfully:", events);
-    response.render("events", {
-      title: "Events",
-      events,
-    });
+    response.render("events", { title: "Events", events });
   } catch (error) {
     console.log(error);
     response.status(500).send("Error loading events");
   }
 });
+
 //login page
 site.get("/login", (request, response) => {
-  response.render("login", {
-    title: "Login",
-  });
+  response.render("login", { title: "Login", error: null });
+});
+
+//login submit
+site.post("/login", async (request, response) => {
+  const { email, password } = request.body;
+  const user = await User.findOne({ email, password });
+
+  if (!user) {
+    return response.render("login", {
+      title: "Login",
+      error: "Email o password incorrect",
+    });
+  }
+
+  request.session.userId = user._id;
+  response.redirect("/dashboard");
 });
 
 //register page
 site.get("/register", (request, response) => {
-  response.render("register", {
-    title: "Register",
-  });
+  response.render("register", { title: "Register", error: null });
 });
+
+//register submit
+site.post("/register", async (request, response) => {
+  const { firstName, lastName, address, email, password } = request.body;
+
+  const newUser = new User({ firstName, lastName, address, email, password });
+  await newUser.save();
+
+  request.session.userId = newUser._id;
+  response.redirect("/dashboard");
+});
+
+//logout
+site.get("/logout", (request, response) => {
+  request.session.destroy(() => response.redirect("/login"));
+});
+
 //contact page
 site.get("/contact", (request, response) => {
-  response.render("contact", {
-    title: "Contact",
-  });
+  response.render("contact", { title: "Contact" });
 });
+
 //merchandise page
 site.get("/merchandise", (request, response) => {
-  response.render("merchandise", {
-    title: "Merchandise",
-  });
+  response.render("merchandise", { title: "Merchandise" });
 });
+
 //admin page
 site.get("/admin", (request, response) => {
-  response.render("admin", {
-    title: "Admin",
-  });
+  response.render("admin", { title: "Admin" });
 });
+
 //cart page
 site.get("/cart", (request, response) => {
   const cartItems = [];
-
   const cartTotal = cartItems.reduce((total, item) => total + item.price, 0);
-
-  response.render("cart", {
-    title: "Cart",
-    cartItems,
-    cartTotal,
-  });
+  response.render("cart", { title: "Cart", cartItems, cartTotal });
 });
 
 //404 error page
