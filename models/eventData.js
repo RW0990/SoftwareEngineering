@@ -22,7 +22,7 @@ async function Connect() {
       venue: "Kilmainham",
       location: "Dublin, Ireland",
       description: "The biggest music music festival in Ireland!",
-      price: 150,
+      price: 50,
     },
   ]);
   console.log("Shows displayed successfully");
@@ -43,7 +43,7 @@ async function Connect() {
       venue: "Whelan's",
       location: "Dublin, Ireland",
       description: "Small acoustic session for our biggest fans!",
-      price: 150,
+      price: 50,
     },
   ]);
   console.log("Events displayed successfully");
