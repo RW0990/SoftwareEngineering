@@ -421,7 +421,43 @@ h1 {
   font-family: "Michroma", sans-serif;
 }
 
+
 /* login button hover */
 .login-container button:hover {
   background-color: #666;
+}
+
+/* tickets page */
+#ticket-card {
+  font-size: 55px;
+  font-family: "Michroma", sans-serif;
+  text-align: center;
+  margin: 40px auto 20px;
+  position: static;
+  transform: none;
+  white-space: nowrap;
+  color: rgb(206, 0, 0);
+  background-color: rgb(22, 22, 22);
+  padding: 10px;
+  padding-top: 0px;
+  border-radius: 15px;
+  width: fit-content;
+}
+
+/* H1 all pages */
+h1 {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+  justify-content: center;
+  color: rgb(206, 0, 0);
+  background-color: rgb(22, 22, 22);
+  padding: 10px;
+  margin: 0;
+  border-radius: 15px;
+}
+
+
+.euro {
+  font-family: Arial, Helvetica, sans-serif;
 }
