@@ -33,7 +33,7 @@
 
         <p><%= event.description %></p>
 
-        <p>Ticket price: €<%= event.price %></p>
+         Ticket price: <span class="euro">&euro;</span><%= event.price %>
 
         <a href="/tickets/<%= event._id %>"> Buy Tickets </a>
       </div>

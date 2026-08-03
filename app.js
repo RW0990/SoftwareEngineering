@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const express = require("express");
 const bandSite = require("./models/bandSite");
+const Event = require("./models/events");
 const site = express();
 
 //use json in browser
@@ -37,8 +38,8 @@ site.get("/", (request, response) => {
 //events page
 site.get("/events", async (request, response) => {
   try {
-    const events = await bandSite.find().sort({ showDate: 1 });
-
+    const events = await Event.find().sort({ showDate: 1 });
+    console.log("Events retrieved successfully:", events);
     response.render("events", {
       title: "Events",
       events,

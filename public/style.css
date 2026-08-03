@@ -63,7 +63,51 @@ body.dashboard {
 /* TITLE main page */
 #dashboardtitle {
   font-size: 55px;
-  font-family: "Montenegrin Gothic One", serif;
+  font-family: "Michroma", sans-serif;
+  text-align: center;
+  margin: 40px auto 20px;
+  position: static;
+  transform: none;
+  white-space: nowrap;
+  color: rgb(206, 0, 0);
+  background-color: rgb(22, 22, 22);
+  padding: 10px;
+  padding-top: 0px;
+  border-radius: 15px;
+  width: fit-content;
+}
+
+/* H1 all pages */
+h1 {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+  justify-content: center;
+  color: rgb(206, 0, 0);
+  background-color: rgb(22, 22, 22);
+  padding: 10px;
+  margin: 0;
+  border-radius: 15px;
+}
+
+/* main page date/details */
+.details {
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  text-align: center;
+  max-width: 600px;
+  margin: 30px auto;
+  padding: 15px;
+  background-color: rgb(206, 0, 0);
+}
+.euro {
+  font-family: Arial, Helvetica, sans-serif;
+}
+/*events page*/
+/* TITLE main page */
+#upcomingevents {
+  font-size: 55px;
+  font-family: "Michroma", sans-serif;
   text-align: center;
   margin: 40px auto 20px;
   position: static;

@@ -1,7 +1,8 @@
 const mongoose = require("mongoose");
 const shows = require("./bandSite.js");
+const event = require("./events.js");
 
-async function getShows() {
+async function Connect() {
   await mongoose.connect(
     "mongodb+srv://whiteryan2599_db_user:2SlHwmD4V7ponOiE@bandapp.2dcjfoh.mongodb.net/BandApp",
   );
@@ -17,7 +18,7 @@ async function getShows() {
     },
     {
       showTitle: "Electric Picnic 2026",
-      showDate: new Date("2026-6-2"),
+      showDate: new Date("2026-8-31"),
       venue: "Kilmainham",
       location: "Dublin, Ireland",
       description: "The biggest music music festival in Ireland!",
@@ -25,9 +26,30 @@ async function getShows() {
     },
   ]);
   console.log("Shows displayed successfully");
+
+  await event.deleteMany({});
+  await event.insertMany([
+    {
+      showTitle: "Meet and greet with the band",
+      showDate: new Date("2026-09-24"),
+      venue: "Gibson Hotel",
+      location: "Dublin, Ireland",
+      description: "Meet the band!",
+      price: 50,
+    },
+    {
+      showTitle: "Acoustic Gig",
+      showDate: new Date("2026-8-31"),
+      venue: "Whelan's",
+      location: "Dublin, Ireland",
+      description: "Small acoustic session for our biggest fans!",
+      price: 150,
+    },
+  ]);
+  console.log("Events displayed successfully");
   await mongoose.disconnect();
 }
-getShows().catch((error) => {
-  console.error("Error displaying shows:", error);
+Connect().catch((error) => {
+  console.error("Error displaying shows/events:", error);
   process.exit(1);
 });
