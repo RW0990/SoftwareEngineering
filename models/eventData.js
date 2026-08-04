@@ -55,7 +55,7 @@ async function Connect() {
     },
     {
       showTitle: "Acoustic Gig",
-      showDate: new Date("2026-9-31"),
+      showDate: new Date("2026-9-29"),
       venue: "Whelan's",
       location: "Dublin, Ireland",
       description: "Small acoustic session for our biggest fans!",
