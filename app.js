@@ -128,6 +128,9 @@ site.get("/admin", (request, response) => {
 site.get("/checkout", (request, response) => {
   response.render("checkout", { title: "Checkout", error: null });
 });
+site.get("/orderplaced", (request, response) => {
+  response.render("orderplaced", { title: "Order Placed", error: null });
+});
 
 //cart page
 site.get("/cart", (request, response) => {
