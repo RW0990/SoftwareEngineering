@@ -21,6 +21,32 @@ body.dashboard {
   background-size: 1250px;
   background-position: center top;
 }
+/* dashboard show cards */
+.dashboard .details {
+  max-width: 650px;
+  margin: 25px auto;
+  padding: 25px;
+  text-align: center;
+  color: white;
+  background-color: rgba(168, 0, 0, 0.95);
+  border: 2px solid red;
+  border-radius: 15px;
+  box-sizing: border-box;
+}
+/* buy tickets button */
+.dashboard .details button {
+  padding: 12px 22px;
+  margin-top: 10px;
+  border: 2px solid red;
+  border-radius: 8px;
+  background-color: #222;
+  color: white;
+  font-family: "Michroma", sans-serif;
+  cursor: pointer;
+}
+.dashboard .details button:hover {
+  background-color: #444;
+}
 
 /* nav bar */
 .menu-bar {
@@ -62,19 +88,15 @@ body.dashboard {
 
 /* TITLE main page */
 #dashboardtitle {
-  font-size: 55px;
-  font-family: "Michroma", sans-serif;
-  text-align: center;
-  margin: 40px auto 20px;
-  position: static;
-  transform: none;
-  white-space: nowrap;
+  justify-content: center;
   color: rgb(206, 0, 0);
   background-color: rgb(22, 22, 22);
-  padding: 10px;
-  padding-top: 0px;
-  border-radius: 15px;
+  padding: 10px, 25px;
   width: fit-content;
+  margin: 40px auto 30px;
+  border-radius: 15px;
+  position: static;
+  transform: none;
 }
 
 /* H1 all pages */
@@ -89,7 +111,6 @@ h1 {
   margin: 0;
   border-radius: 15px;
 }
-
 /* main page date/details */
 .details {
   color: rgb(255, 255, 255);
@@ -103,36 +124,45 @@ h1 {
 .euro {
   font-family: Arial, Helvetica, sans-serif;
 }
+
+
 /*events page*/
-/* TITLE main page */
 #upcomingevents {
-  font-size: 35px;
-  font-family: "Michroma", sans-serif;
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 0 20px 40px;
   text-align: center;
-  margin: 40px auto 20px;
+  box-sizing: border-box;
+}
+#upcomingevents > h1 {
   position: static;
   transform: none;
-  white-space: nowrap;
-  color: rgb(206, 0, 0);
-  background-color: rgb(22, 22, 22);
-  padding: 10px;
-  padding-top: 0px;
+}
+/* Individual event cards */
+.event-card {
+  max-width: 650px;
+  margin: 25px auto;
+  padding: 5px;
+  color: white;
+  background-color: rgb(158, 0, 0);
+  border: 2px solid red;
   border-radius: 15px;
-  width: fit-content;
+  box-sizing: border-box;
+}
+/* Events ticket link styled as button */
+.event-card a {
+  display: inline-block;
+  margin-top: 18px;
+  padding: 12px 22px;
+  color: white;
+  background-color: #222;
+  text-decoration: none;
+  border-radius: 8px;
+}
+.event-card a:hover {
+  background-color: #444;
 }
 
-/* H1 all pages */
-h1 {
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%);
-  justify-content: center;
-  color: rgb(206, 0, 0);
-  background-color: rgb(22, 22, 22);
-  padding: 10px;
-  margin: 0;
-  border-radius: 15px;
-}
 
 /* main page date/details */
 .details {
