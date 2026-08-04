@@ -15,6 +15,10 @@
 
     <%- include('partials/nav') %>
 
+
+    <% if (message) { %>
+  <p class="success-message"><%= message %></p>
+<% } %>
     <h1 id="dashboardtitle">Upcoming Shows</h1>
 
     <% bandSite.forEach(show => { %>
@@ -41,7 +45,7 @@
         Ticket price: <span class="euro">&euro;</span><%= show.price %>
       </p>
 
-      <a href="/tickets/<%= show._id %>">
+      <a href="/events">
         <button type="button">
           Buy Tickets
         </button>

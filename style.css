@@ -465,3 +465,10 @@ h1 {
   color: white;
   border-radius: 15px;
 }
+p.error-message {
+  color: red;
+}
+
+p.success-message {
+  color: red;
+}

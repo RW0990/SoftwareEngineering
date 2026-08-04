@@ -2,6 +2,9 @@
   <ul>
     <li class="NavBarLogo"><img src="images/logo.png" alt="Band Logo"
         class="logo" /></li>
+      <% if (userEmail) { %>
+  <span class="welcome-message">Welcome, <%= userEmail %></span>
+<% } %>
     <li><a href="/">Main</a></li>
     <li><a href="/events">Events</a></li>
     <li><a href="/contact">Contact</a></li>

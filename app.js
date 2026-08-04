@@ -19,18 +19,36 @@ site.set("view engine", "ejs");
 site.use(
   session({ secret: "segreto123", resave: false, saveUninitialized: false }),
 );
-
+site.use((request, response, next) => {
+  response.locals.userEmail = request.session.userEmail || null;
+  next();
+});
 //connection to Database
 const DBURI =
   "mongodb+srv://whiteryan2599_db_user:2SlHwmD4V7ponOiE@bandapp.2dcjfoh.mongodb.net/BandApp";
 
 //route
 site.get("/", (request, response) => {
+  let message = null;
+  if (request.query.registered) {
+    message = "Registration completed successfully!";
+  } else if (request.query.login) {
+    message = "Login successful!";
+  }
+
   bandSite
     .find()
     .sort({ createdAt: -1 })
     .then((result) =>
-      response.render("dashboard", { title: "Dashboard", bandSite: result }),
+      response.render("dashboard", {
+        title: "Dashboard",
+        bandSite: result,
+        message,
+        eventName: "Rock Shock Party",
+        eventDate: "15 OCTOBER 2026",
+        eventLocation: "DUBLIN",
+        eventId: 1,
+      }),
     )
     .catch((error) => {
       console.log(error);
@@ -62,12 +80,13 @@ site.post("/login", async (request, response) => {
   if (!user) {
     return response.render("login", {
       title: "Login",
-      error: "Email o password incorrect",
+      error: "Email or password incorrect",
     });
   }
 
   request.session.userId = user._id;
-  response.redirect("/");
+  request.session.userEmail = user.email; //
+  response.redirect("/?login=true");
 });
 
 //register page
@@ -83,7 +102,7 @@ site.post("/register", async (request, response) => {
   await newUser.save();
 
   request.session.userId = newUser._id;
-  response.redirect("/");
+  response.redirect("/?registered=true");
 });
 
 //logout
@@ -137,12 +156,3 @@ mongoose
     );
   })
   .catch((error) => console.log("MongoDB connection error: ", error));
-
-site.get("/dashboard", (req, res) => {
-  res.render("dashboard", {
-    eventName: "Rock Shock Party",
-    eventDate: "15 OCTOBER 2026",
-    eventLocation: "DUBLIN",
-    eventId: 1,
-  });
-});
