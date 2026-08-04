@@ -126,7 +126,7 @@ site.get("/admin", (request, response) => {
 });
 //checkout page
 site.get("/checkout", (request, response) => {
-  response.render("checkout", { title: "Checkout" });
+  response.render("checkout", { title: "Checkout", error: null });
 });
 
 //cart page
