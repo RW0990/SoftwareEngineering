@@ -15,43 +15,43 @@
     <body>
         <%- include('partials/nav') %>
 
-        <div class="register-box">
-            <form class="register-form" action="/register" method="POST">
-                <p class="register-title">Checkout</p>
+        <div class="checkout-box">
+            <form class="checkout-form" action="/checkout" method="POST">
+                <p class="checkout-title">Checkout</p>
 
-                <% if (error) { %>
+                <% if (typeof error!=='undefined'&& error) { %>
                 <p class="error-message"><%= error %></p>
                 <% } %>
 
-                <div class="registerGroup">
+                <div class="checkoutGroup">
                     <label>First name</label>
                     <input type="text" name="firstName" placeholder="Enter your first name">
                 </div>
 
-                <div class="registerGroup">
+                <div class="checkoutGroup">
                     <label>Last name</label>
                     <input type="text" name="lastName" placeholder="Enter your last name">
                 </div>
 
-                <div class="registerGroup">
+                <div class="checkoutGroup">
                     <label>Address</label>
                     <input type="text" name="address" placeholder="Enter your address">
                 </div>
 
-                <div class="registerGroup">
+                <div class="checkoutGroup">
                     <label>Email</label>
                     <input type="email" name="email" placeholder="Enter your email">
                 </div>
 
-                <div class="registerGroup">
+                <div class="checkoutGroup">
                     <label>Card Number</label>
                     <input type="text" name="cardNumber" placeholder="Enter your Card Number">
                 </div>
-                 <div class="registerGroup">
+                 <div class="checkoutGroup">
                     <label>CVV</label>
-                    <input type="text" name="cvv" placeholder="Enter your CVV (the 3 digit on the back of your card)">
+                    <input type="text" name="cvv" placeholder="The 3 digits on the back of your card">
                 </div>
-                 <div class="registerGroup">
+                 <div class="checkoutGroup">
                     <label>Expiry Date</label>
                     <input type="date" name="expiryDate" placeholder="Enter your Expiry Date">
                 </div>
