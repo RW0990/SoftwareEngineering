@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Checkout</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <link rel="stylesheet" href="style.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Michroma&display=swap"
+            rel="stylesheet">
+
+    </head>
+    <body>
+        <%- include('partials/nav') %>
+
+        <div class="register-box">
+            <form class="register-form" action="/register" method="POST">
+                <p class="register-title">Checkout</p>
+
+                <% if (error) { %>
+                <p class="error-message"><%= error %></p>
+                <% } %>
+
+                <div class="registerGroup">
+                    <label>First name</label>
+                    <input type="text" name="firstName" placeholder="Enter your first name">
+                </div>
+
+                <div class="registerGroup">
+                    <label>Last name</label>
+                    <input type="text" name="lastName" placeholder="Enter your last name">
+                </div>
+
+                <div class="registerGroup">
+                    <label>Address</label>
+                    <input type="text" name="address" placeholder="Enter your address">
+                </div>
+
+                <div class="registerGroup">
+                    <label>Email</label>
+                    <input type="email" name="email" placeholder="Enter your email">
+                </div>
+
+                <div class="registerGroup">
+                    <label>Card Number</label>
+                    <input type="text" name="cardNumber" placeholder="Enter your Card Number">
+                </div>
+                 <div class="registerGroup">
+                    <label>CVV</label>
+                    <input type="text" name="cvv" placeholder="Enter your CVV (the 3 digit on the back of your card)">
+                </div>
+                 <div class="registerGroup">
+                    <label>Expiry Date</label>
+                    <input type="date" name="expiryDate" placeholder="Enter your Expiry Date">
+                </div>
+
+                <button type="submit">Checkout Securely</button>
+            </form>
+        </div>
+    </body>
+</html>
