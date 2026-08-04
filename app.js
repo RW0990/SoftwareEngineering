@@ -124,6 +124,10 @@ site.get("/merchandise", (request, response) => {
 site.get("/admin", (request, response) => {
   response.render("admin", { title: "Admin" });
 });
+//checkout page
+site.get("/checkout", (request, response) => {
+  response.render("checkout", { title: "Checkout" });
+});
 
 //cart page
 site.get("/cart", (request, response) => {
