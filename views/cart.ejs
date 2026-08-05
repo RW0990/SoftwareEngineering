@@ -10,20 +10,23 @@
     <link href="https://fonts.googleapis.com/css2?family=Michroma&display=swap" rel="stylesheet" />
   </head>
   <body>
+    
     <%- include('partials/nav') %>
+    <h1>Your Cart</h1>
     <div class="basket">
-      <img src="/basket-icon.png" alt="Basket Icon" />
+      <img src="/images/basket-icon.png" alt="Basket Icon" />
       <p>Basket</p>
     </div>
 
     <main class="cart-page">
-      <h1>Your Cart</h1>
+  
 
       <% if (cartItems && cartItems.length > 0) { %>
         <div class="cart-items">
+      
           <% cartItems.forEach(function(item) { %>
             <div class="cart-item" data-id="<%= item.id %>">
-              <img src="<%= item.image %>" alt="<%= item.name %>" />
+              <img src="<%= /images/+item.image %>" alt="<%= item.name %>" />
               <p class="item-name"><%= item.name %></p>
               <p class="item-price">$<%= item.price %></p>
               <p class="item-quantity">Qty: <%= item.quantity %></p>
@@ -40,7 +43,7 @@
 
       <div class="cart-summary">
         <p class="cart-total">Total: $<span id="cart-total-amount"><%= cartTotal || 0 %></span></p>
-        <a href="/checkout" button type="button" id="checkout-btn">Checkout</a>
+        <a href="/checkout" id="checkout-btn">Checkout</a>
       </div>
     </main>
   </body>
