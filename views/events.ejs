@@ -35,7 +35,13 @@
 
          Ticket price: <span class="euro">&euro;</span><%= event.price %>
 
-        <a href="/tickets/<%= event._id %>"> Buy Tickets </a>
+       <form action="/cart/add" method="POST">
+  <input type="hidden" name="id" value="<%= event._id %>">
+  <input type="hidden" name="name" value="<%= event.showTitle %>">
+  <input type="hidden" name="price" value="<%= event.price %>">
+  <input type="hidden" name="type" value="event">
+  <button type="submit">Buy Tickets</button>
+</form>
       </div>
 
       <% }) %>

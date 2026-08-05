@@ -132,10 +132,54 @@ site.get("/orderplaced", (request, response) => {
   response.render("orderplaced", { title: "Order Placed", error: null });
 });
 
+//add to cart
+site.post("/cart/add", (request, response) => {
+  const { id, name, price, type } = request.body;
+
+  if (!request.session.cart) {
+    request.session.cart = [];
+  }
+
+  const existingItem = request.session.cart.find(
+    (item) => item.id === id && item.type === type,
+  );
+
+  if (existingItem) {
+    existingItem.quantity += 1;
+  } else {
+    request.session.cart.push({
+      id,
+      name,
+      price: parseFloat(price),
+      type,
+      quantity: 1,
+    });
+  }
+
+  response.redirect("/cart");
+});
+
+//remove from cart
+site.post("/cart/remove", (request, response) => {
+  const { id, type } = request.body;
+
+  if (request.session.cart) {
+    request.session.cart = request.session.cart.filter(
+      (item) => !(item.id === id && item.type === type),
+    );
+  }
+
+  response.redirect("/cart");
+});
+
 //cart page
 site.get("/cart", (request, response) => {
-  const cartItems = [];
-  const cartTotal = cartItems.reduce((total, item) => total + item.price, 0);
+  const cartItems = request.session.cart || [];
+  const cartTotal = cartItems.reduce(
+    (total, item) => total + item.price * item.quantity,
+    0,
+  );
+
   response.render("cart", { title: "Cart", cartItems, cartTotal });
 });
 
