@@ -9,7 +9,6 @@
 body {
   font-family: "Michroma", sans-serif;
   font-weight: 400;
-  background-color: #f4f4f4;
   background-color: rgb(22, 22, 22);
   margin: 0;
   padding: 0;
@@ -521,4 +520,111 @@ h1 {
   align-items: center;
   gap: 20px;
   margin-bottom: 20px;
+}
+
+.cart-page {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  box-sizing: border-box;
+}
+.basket {
+  display: flex;
+  background-color: white;
+  padding: 8px 14px;
+  gap: 8px;
+  width: fit-content;
+  border-radius: 8px;
+  align-items: center;
+  margin: 10px 20px 0 auto;
+}
+.basket img {
+  width: 40px;
+  height: auto;
+  margin: 0;
+}
+.basket p {
+  margin: 0;
+  color: #222;
+}
+main.cart-part h1 {
+  position: static;
+  transform: none;
+  width: fit-content;
+  margin: 20px auto 30px;
+  text-align: center;
+}
+.cart-items {
+  display: flex;
+  flex-direction: column;
+  gap: 20x;
+}
+.cart-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 15px;
+  color: white;
+  background-color: #222;
+  border: 2px solid #ff0000;
+  border-radius: 12px;
+}
+.cart-item img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+.cart-item p {
+  margin: 0;
+}
+.cart-item .item-name {
+  flex: 1;
+  font-weight: bold;
+}
+.remove-item-btn {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 8px;
+  background-color: #a80000;
+  color: white;
+  cursor: pointer;
+  font-family: "Michroma", sans-serif;
+}
+.remove-item-btn:hover {
+  background-color: #cc0000;
+}
+.cart-empty {
+  text-align: center;
+  font-size: 18px;
+  color: white;
+  padding: 40px;
+  background-color: #222;
+  border-radius: 12px;
+}
+.cart-summary {
+  margin-top: 30px;
+  padding: 20px;
+  text-align: center;
+  color: white;
+  background-color: #222;
+  border: 2px solid #ff0000;
+  border-radius: 12px;
+}
+.cart-total {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+#checkout-btn {
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: #a80000;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-family: "Michroma", sans-serif;
+}
+#checkout-btn:hover {
+  background-color: #cc0000;
 }
