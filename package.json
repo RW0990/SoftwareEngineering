@@ -23,8 +23,9 @@
   },
   "scripts": {
     "start": "node app.js",
-    "test": "echo \"No tests yet\""
+    "test": "vitest"
   },
-  "start": "node app.js",
-  "test": "echo \"No tests yet\""
+  "devDependencies": {
+    "vitest": "^4.1.10"
+  }
 }
