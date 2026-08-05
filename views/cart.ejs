@@ -26,7 +26,7 @@
       
           <% cartItems.forEach(function(item) { %>
             <div class="cart-item" data-id="<%= item.id %>">
-              <img src="<%= /images/+item.image %>" alt="<%= item.name %>" />
+              <img src="<%= item.image %>" alt="<%= item.name %>" />
               <p class="item-name"><%= item.name %></p>
               <p class="item-price">$<%= item.price %></p>
               <p class="item-quantity">Qty: <%= item.quantity %></p>
