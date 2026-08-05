@@ -134,7 +134,7 @@ site.get("/orderplaced", (request, response) => {
 
 //add to cart
 site.post("/cart/add", (request, response) => {
-  const { id, name, price, type } = request.body;
+  const { id, name, price, type, image } = request.body;
 
   if (!request.session.cart) {
     request.session.cart = [];
@@ -152,6 +152,7 @@ site.post("/cart/add", (request, response) => {
       name,
       price: parseFloat(price),
       type,
+      image,
       quantity: 1,
     });
   }
