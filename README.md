@@ -10,6 +10,8 @@ MongoDB
 CSS
 Express
 Render
+Vitest
+supertest
 
 #How to install
 Clone Repo:
