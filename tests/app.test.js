@@ -10,8 +10,8 @@ import {
 } from "vitest";
 import request from "supertest";
 import mongoose from "mongoose";
-import { app } from "../../app.js";
-import User from "../User.js";
+import { app } from "../app.js";
+import User from "../models/User.js";
 
 const dburi =
   "mongodb+srv://whiteryan2599_db_user:rirjo6-mawpiw-dawTep@test.qmwnz42.mongodb.net/Test";
