@@ -128,6 +128,33 @@ site.get("/admin", (request, response) => {
 site.get("/checkout", (request, response) => {
   response.render("checkout", { title: "Checkout", error: null });
 });
+
+//checkout submit
+site.post("/checkout", (request, response) => {
+  const { firstName, lastName, address, email, cardNumber, cvv, expiryDate } =
+    request.body;
+
+  if (
+    !firstName ||
+    !lastName ||
+    !address ||
+    !email ||
+    !cardNumber ||
+    !cvv ||
+    !expiryDate
+  ) {
+    return response.render("checkout", {
+      title: "Checkout",
+      error: "Please fill in all fields",
+    });
+  }
+
+  // cart empty after order completed
+  request.session.cart = [];
+
+  response.redirect("/orderplaced");
+});
+
 site.get("/orderplaced", (request, response) => {
   response.render("orderplaced", { title: "Order Placed", error: null });
 });
