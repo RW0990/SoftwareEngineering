@@ -195,16 +195,20 @@ site.use((request, response) => {
 });
 
 //setting up connection
-console.log(DBURI);
-mongoose
-  .connect(DBURI)
-  .then(() => {
-    console.log("Connected to MongoDB");
-    const PORT = process.env.PORT || 3000;
-    site.listen(PORT, () =>
-      console.log(
-        `Server running on port ${PORT} - run http://localhost:${PORT}/ in your browser`,
-      ),
-    );
-  })
-  .catch((error) => console.log("MongoDB connection error: ", error));
+if (require.main === module) {
+  console.log(DBURI);
+
+  mongoose
+    .connect(DBURI)
+    .then(() => {
+      console.log("Connected to MongoDB");
+      const PORT = process.env.PORT || 3000;
+      site.listen(PORT, () =>
+        console.log(
+          `Server running on port ${PORT} - run http://localhost:${PORT}/ in your browser`,
+        ),
+      );
+    })
+    .catch((error) => console.log("MongoDB connection error: ", error));
+}
+module.exports = { app: site };
