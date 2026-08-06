@@ -23,9 +23,10 @@
   },
   "scripts": {
     "start": "node app.js",
-    "test": "vitest"
+    "test": "vitest run"
   },
   "devDependencies": {
+    "supertest": "^7.2.2",
     "vitest": "^4.1.10"
   }
 }
