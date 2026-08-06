@@ -8,4 +8,5 @@ const bandSiteSchema = new mongoose.Schema({
   description: { type: String, required: true },
   price: { type: Number, required: true },
 });
-module.exports = mongoose.model("bandSite", bandSiteSchema);
+module.exports =
+  mongoose.models.bandSite || mongoose.model("bandSite", bandSiteSchema);

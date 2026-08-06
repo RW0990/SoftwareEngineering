@@ -8,4 +8,4 @@ const eventSchema = new mongoose.Schema({
   description: { type: String, required: true },
   price: { type: Number, required: true },
 });
-module.exports = mongoose.model("Event", eventSchema);
+module.exports = mongoose.models.Event || mongoose.model("Event", eventSchema);
