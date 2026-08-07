@@ -628,3 +628,20 @@ main.cart-part h1 {
 #checkout-btn:hover {
   background-color: #cc0000;
 }
+
+.success-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 70vh;
+}
+
+.form-success {
+  color: red;
+  font-size: 1.3rem;
+  text-align: center;
+}
+
+.form-error {
+  color: red;
+}

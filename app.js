@@ -118,50 +118,32 @@ site.post("/contact", (request, response, next) => {
 
 //contact page
 site.get("/contact", (request, response) => {
-  response.render("contact", { title: "Contact", success: request.query.success === "true", error: "", name: "", email: "", message: ""});
+  response.render("contact", { title: "Contact", success: false, error: null });
 });
 //submut contact form
-site.post("/contact", async (request, response) => {
-  try {
-    //get name, email and message from the form
-    const { name, email, message } = request.body;
-    
-    // if any of the fields are empty, return an error message
-    if (!name || !email || !message) {
-      return response.status(400).render("contact", {
-        success: false,
-        error: "Please complete all fields.",
-        name: name || "",
-        email: email || "",
-        message: message || "",
-      });
-    }
-    //create a new contact and save it to the database
-    const newContact = new Contact({
+site.post("/contact", (request, response) => {
+  const { name, email, message } = request.body;
+
+  if (!name || !email || !message) {
+    return response.render("contact", {
+      title: "Contact",
+      error: "Please fill in all fields",
+      success: false,
       name,
       email,
       message,
     });
-    //save
-    await newContact.save();
-
-    //redirect to contact page with success message
-    response.redirect("/contact?success=true");
-    //if there is no success, show an error message
-  } catch (error) {
-    console.error("Contact form error:", error);
-
-    //keep contact page open with the error message 
-    response.status(500).render("contact", {
-      success: false,
-      error: "Your message could not be sent. Please try again.",
-      name: request.body.name || "",
-      email: request.body.email || "",
-      message: request.body.message || "",
-    });
   }
-});
 
+  response.render("contact", {
+    title: "Contact",
+    success: true,
+    error: null,
+    name: "",
+    email: "",
+    message: "",
+  });
+});
 
 //merchandise page
 site.get("/merchandise", (request, response) => {
@@ -258,7 +240,6 @@ site.get("/cart", (request, response) => {
 
   response.render("cart", { title: "Cart", cartItems, cartTotal });
 });
-
 
 //setting up connection
 if (require.main === module) {

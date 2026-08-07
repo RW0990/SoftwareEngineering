@@ -11,18 +11,20 @@
       rel="stylesheet" />
   </head>
 
-  <body>
+<body>
     <%- include('partials/nav') %>
     <h1>Contact Us</h1>
 
     <% if (typeof success !== 'undefined' && success) { %>
-    <p class="form-success">Thank you for sending a message, we will reply
-      shortly.</p>
-    <% } %>
+<div class="success-container">
+  <p class="form-success">Thank you for sending a message, we will reply shortly.</p>
+</div>
+<% } else { %>
 
     <% if (typeof error !== 'undefined' && error) { %>
     <p class="form-error"><%= error %></p>
     <% } %>
+
     <div class="contactDiv">
       <form id="contactForm" action="/contact" method="POST">
 
@@ -58,12 +60,6 @@
       </form>
     </div>
 
-    <script>
-      document
-        .getElementById("contactForm")
-        .addEventListener("submit", function (event) {
-       
-        });
-    </script>
+    <% } %>
   </body>
 </html>
