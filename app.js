@@ -4,6 +4,7 @@ const session = require("express-session");
 const bandSite = require("./models/bandSite");
 const Event = require("./models/events");
 const User = require("./models/User");
+const Contact = require("./models/contact");
 const site = express();
 
 //use json in browser
@@ -110,10 +111,57 @@ site.get("/logout", (request, response) => {
   request.session.destroy(() => response.redirect("/login"));
 });
 
+site.post("/contact", (request, response, next) => {
+  console.log("POST /contact reached");
+  next();
+});
+
 //contact page
 site.get("/contact", (request, response) => {
-  response.render("contact", { title: "Contact" });
+  response.render("contact", { title: "Contact", success: request.query.success === "true", error: "", name: "", email: "", message: ""});
 });
+//submut contact form
+site.post("/contact", async (request, response) => {
+  try {
+    //get name, email and message from the form
+    const { name, email, message } = request.body;
+    
+    // if any of the fields are empty, return an error message
+    if (!name || !email || !message) {
+      return response.status(400).render("contact", {
+        success: false,
+        error: "Please complete all fields.",
+        name: name || "",
+        email: email || "",
+        message: message || "",
+      });
+    }
+    //create a new contact and save it to the database
+    const newContact = new Contact({
+      name,
+      email,
+      message,
+    });
+    //save
+    await newContact.save();
+
+    //redirect to contact page with success message
+    response.redirect("/contact?success=true");
+    //if there is no success, show an error message
+  } catch (error) {
+    console.error("Contact form error:", error);
+
+    //keep contact page open with the error message 
+    response.status(500).render("contact", {
+      success: false,
+      error: "Your message could not be sent. Please try again.",
+      name: request.body.name || "",
+      email: request.body.email || "",
+      message: request.body.message || "",
+    });
+  }
+});
+
 
 //merchandise page
 site.get("/merchandise", (request, response) => {
@@ -211,15 +259,6 @@ site.get("/cart", (request, response) => {
   response.render("cart", { title: "Cart", cartItems, cartTotal });
 });
 
-//404 error page
-site.use((request, response) => {
-  response.status(404).render("404", {
-    title: "Error",
-    heading: "Page not found",
-    message: "The page you are looking for does not exist.",
-    status: 404,
-  });
-});
 
 //setting up connection
 if (require.main === module) {
@@ -239,3 +278,13 @@ if (require.main === module) {
     .catch((error) => console.log("MongoDB connection error: ", error));
 }
 module.exports = { app: site };
+
+//404 error page
+site.use((request, response) => {
+  response.status(404).render("404", {
+    title: "Error",
+    heading: "Page not found",
+    message: "The page you are looking for does not exist.",
+    status: 404,
+  });
+});

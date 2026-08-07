@@ -7,10 +7,11 @@
     <link rel="stylesheet" href="/style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Michroma&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Michroma&display=swap"
+      rel="stylesheet" />
   </head>
   <body>
-    
+
     <%- include('partials/nav') %>
     <h1>Your Cart</h1>
     <div class="basket">
@@ -19,34 +20,35 @@
     </div>
 
     <main class="cart-page">
-  
 
       <% if (cartItems && cartItems.length > 0) { %>
-        <div class="cart-items">
-      
-          <% cartItems.forEach(function(item) { %>
-  <div class="cart-item" data-id="<%= item.id %>">
-    <img src="<%= item.image %>" alt="<%= item.name %>" />
-    <p class="item-name"><%= item.name %></p>
-    <p class="item-price">$<%= item.price %></p>
-    <p class="item-quantity">Qty: <%= item.quantity %></p>
-    <p class="item-subtotal">$<%= (item.price * item.quantity).toFixed(2) %></p>
-    <form action="/cart/remove" method="POST">
-      <input type="hidden" name="id" value="<%= item.id %>">
-      <input type="hidden" name="type" value="<%= item.type %>">
-      <button type="submit" class="remove-item-btn">Remove</button>
-    </form>
-  </div>
-<% }); %>
+      <div class="cart-items">
+
+        <% cartItems.forEach(function(item) { %>
+        <div class="cart-item" data-id="<%= item.id %>">
+          <img src="<%= item.image %>" alt="<%= item.name %>" />
+          <p class="item-name"><%= item.name %></p>
+          <p class="item-price">$<%= item.price %></p>
+          <p class="item-quantity">Qty: <%= item.quantity %></p>
+          <p class="item-subtotal">$<%= (item.price * item.quantity).toFixed(2)
+            %></p>
+          <form action="/cart/remove" method="POST">
+            <input type="hidden" name="id" value="<%= item.id %>">
+            <input type="hidden" name="type" value="<%= item.type %>">
+            <button type="submit" class="remove-item-btn">Remove</button>
+          </form>
         </div>
+        <% }); %>
+      </div>
       <% } else { %>
-        <div class="cart-empty">
-          <p>Your cart is empty.</p>
-        </div>
+      <div class="cart-empty">
+        <p>Your cart is empty.</p>
+      </div>
       <% } %>
 
       <div class="cart-summary">
-        <p class="cart-total">Total: $<span id="cart-total-amount"><%= cartTotal || 0 %></span></p>
+        <p class="cart-total">Total: $<span id="cart-total-amount"><%= cartTotal
+            || 0 %></span></p>
         <a href="/checkout" id="checkout-btn">Checkout</a>
       </div>
     </main>

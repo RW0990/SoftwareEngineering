@@ -45,15 +45,15 @@
 
                 <div class="checkoutGroup">
                     <label>Card Number</label>
-                    <input type="text" name="cardNumber" placeholder="Enter your Card Number" required>
+                    <input type="text" name="cardNumber" placeholder="Enter your Card Number" maxlength="16" minlength="16" required>
                 </div>
                  <div class="checkoutGroup">
                     <label>CVV</label>
-                    <input type="text" name="cvv" placeholder="The 3 digits on the back of your card" required>
+                    <input type="text" name="cvv" placeholder="The 3 digits on the back of your card" maxlength="3" minlength="3" required>
                 </div>
                  <div class="checkoutGroup">
                     <label>Expiry Date</label>
-                    <input type="date" name="expiryDate" placeholder="Enter your Expiry Date" required>
+                    <input  name="expiryDate" placeholder="Enter your Expiry Date" type="month" min="2026-08" required>
                 </div>
 
                  <button type="submit" id="orderPlaced-btn">Checkout</button>
